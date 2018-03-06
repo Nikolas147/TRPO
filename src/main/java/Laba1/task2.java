@@ -23,7 +23,7 @@ public class task2 {
 
         String string1       = "20-12-2133";
         String string2       = "dsf 01-12-2012 sdfpfdzsxgvjlgdfzftreweq2356786redxcvb 20-12-2133T18:50:50";
-        String string3       = "ddcdfkjgfdf.hjklj@drom.com";
+        String string3       = "ddcdfkjg___fdf.hjklj@drom.com";
 
         isRegex(regexData, string1);
         isRegex(regexDataTime, string2);
