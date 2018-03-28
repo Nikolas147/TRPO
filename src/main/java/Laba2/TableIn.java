@@ -3,7 +3,7 @@ package Laba2;
 
 import java.util.List;
 
-public class tableIN {
+public class TableIn {
 
     private List<Object> columnNames;    // = new ArrayList<BIConversion.User>();
     private List<Object> columnTypes;

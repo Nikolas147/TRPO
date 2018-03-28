@@ -1,19 +1,19 @@
 package Laba2;
 
-public class tableOUT {
-    private tableIN table;
+public class TableOut {
+    private TableIn table;
 
-    public tableIN getTable() {
+    public TableIn getTable() {
         return table;
     }
 
-    public void setTable(tableIN table) {
+    public void setTable(TableIn table) {
         this.table = table;
     }
 
     @Override
     public String toString() {
-        return "tableOUT{" +
+        return "TableOut{" +
                 "table=" + table +
                 '}';
     }

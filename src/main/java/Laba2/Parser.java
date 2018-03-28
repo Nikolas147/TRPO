@@ -6,9 +6,9 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
 
-public class parser {
+public class Parser {
     public static void main(String[] args) throws IOException {
-        tableOUT table = JSON.parseObject(readFile(), tableOUT.class);
+        TableOut table = JSON.parseObject(readFile(), TableOut.class);
         String what = "current_speed";
         Assistant Current_speed = new Assistant(table.getTable().getRows().get(0), what, table.getTable().getColumnNames());
         what = "temperature";
@@ -16,10 +16,10 @@ public class parser {
         what = "salinity";
         Assistant Salinity = new Assistant(table.getTable().getRows().get(0), what, table.getTable().getColumnNames());
 
-        for (List<Object> i : table.getTable().getRows()) {
-            Current_speed.find(i);
-            Temperature.find(i);
-            Salinity.find(i);
+        for (List<Object> i : table.getTable().getRows()) { //изменить i!!!!!!!!!
+            Current_speed.calculate(i);
+            Temperature.calculate(i);
+            Salinity.calculate(i);
             }
 
         System.out.println("{\n" + Current_speed + ",");
