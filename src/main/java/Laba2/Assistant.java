@@ -1,5 +1,8 @@
 package Laba2;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,15 +13,19 @@ public class Assistant {
     private String column;
     private int num_column;
     private float sum;
+    private String start_date;
+    private String end_date;
 
 
-    public Assistant(List<Object> temp, String column, List<Object> where) {
-        Max = temp;
-        Min = temp;
+    public Assistant(TableOut table, String column) {
+        Max = table.getTable().getRows().get(0);
+        Min = table.getTable().getRows().get(0);
         this.num_record = 0;
         this.column = column;
-        this.num_column = whatSearch(column, where);
+        this.num_column = whatSearch(column, table.getTable().getColumnNames());
         this.sum = 0;
+        this.start_date = getDate(table, 0);
+        this.end_date = getDate(table, table.getTable().getRows().size() - 1);
     }
     public Assistant() {
         this.num_record = 0;
@@ -44,6 +51,12 @@ public class Assistant {
     public float getSum() {
         return sum;
     }
+    public String getStart_date() {
+        return start_date;
+    }
+    public String getEnd_date() {
+        return end_date;
+    }
 
     public void setMax(List<Object> max) {
         Max = max;
@@ -62,6 +75,25 @@ public class Assistant {
     }
     public void setSum(float sum) {
         this.sum = sum;
+    }
+    public void setStart_date(String start_date) {
+        this.start_date = start_date;
+    }
+    public void setEnd_date(String end_date) {
+        this.end_date = end_date;
+    }
+
+    public String getDate(TableOut table, int number){
+        String str = table.getTable().getRows().get(number).get(3).toString();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = dateFormat.parse(str);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateFormat.format(date);
+
     }
 
     public void calculate(List<Object> counter){
@@ -92,8 +124,8 @@ public class Assistant {
     @Override
     public String toString() {
         return  "    \"" + column + "\": {\n" +
-                "       \"start_date\": \"2015-08-15\",\n" +
-                "       \"end_date\": \"2016-12-05\",\n" +
+                "       \"start_date\": \"" + start_date + "\",\n" +
+                "       \"end_date\": \"" + end_date + "\",\n" +
                 "       \"num_records\": " + num_record + ",\n" +
                 "       \"min_" + column + "\": " + Min.get(num_column) + ",\n" +
                 "       \"min_time\": \"" + Min.get(3) + "\",\n" +

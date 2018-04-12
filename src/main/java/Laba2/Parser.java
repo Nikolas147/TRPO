@@ -1,22 +1,24 @@
 package Laba2;
 
-import com.alibaba.fastjson.JSON;
+
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Scanner;
+import com.alibaba.fastjson.JSON;
 
 public class Parser {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
         TableOut table = JSON.parseObject(readFile(), TableOut.class);
         String what = "current_speed";
-        Assistant Current_speed = new Assistant(table.getTable().getRows().get(0), what, table.getTable().getColumnNames());
+        Assistant Current_speed = new Assistant(table, what);
         what = "temperature";
-        Assistant Temperature = new Assistant(table.getTable().getRows().get(0), what, table.getTable().getColumnNames());
+        Assistant Temperature = new Assistant(table, what);
         what = "salinity";
-        Assistant Salinity = new Assistant(table.getTable().getRows().get(0), what, table.getTable().getColumnNames());
+        Assistant Salinity = new Assistant(table, what);
 
-        for (List<Object> i : table.getTable().getRows()) { //изменить i!!!!!!!!!
+        for (List<Object> i : table.getTable().getRows()) {
             Current_speed.calculate(i);
             Temperature.calculate(i);
             Salinity.calculate(i);
