@@ -9,6 +9,29 @@
     <version>01.03.03-00</version>
     <packaging>war</packaging>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jetty-version>9.2.7.v20150116</jetty-version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.0</version>
+                <configuration>
+                    <!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
 
     <dependencies>
 
@@ -37,11 +60,29 @@
             <version>5.1.46</version>
         </dependency>
 
+
+
+
+        <!-- To write basic websockets against -->
+        <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-api</artifactId>
+            <version>${jetty-version}</version>
+        </dependency>
+        <!-- To run websockets in embedded server -->
+        <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-server</artifactId>
+            <version>${jetty-version}</version>
+        </dependency>
+        <!-- To run websockets client -->
+        <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-client</artifactId>
+            <version>${jetty-version}</version>
+        </dependency>
+
     </dependencies>
 
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
 
 </project>
