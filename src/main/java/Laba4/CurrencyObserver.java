@@ -62,7 +62,7 @@ public class CurrencyObserver implements Runnable {//он создается о�
                             return new AbstractMap.SimpleEntry<>(key, value);
                         }).filter(e -> !e.getValue().equals(currencies.get(e.getKey()))).
                                 collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-                System.out.println(map);//теперь меняет только обновление, тут можно отследить
+                System.out.println(map);//теперь меняет только обновление, можно отследить
                 if (!map.isEmpty()) {
                     listeners.forEach(currencyListener -> currencyListener.onChangeCurrencies(map));
                     map.forEach(currencies::put);

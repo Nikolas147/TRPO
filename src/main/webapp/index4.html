@@ -1,0 +1,51 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF8">
+<html>
+<head>
+    <title>Курс доллара</title>
+    <script>
+        const socket = new WebSocket("ws://127.0.0.1:82/connection/");//устанавливает соед
+        socket.onmessage = function(event) {
+            var data = JSON.parse(event.data);
+            for (value in data) {
+                document.getElementById(value).innerHTML = data[value];
+            }
+        };
+    </script>
+</head>
+<body>
+
+
+<h2 align="center">Текущий курс Доллара($) по отношению к:</h2>
+<br>
+<table align="center" border="1" >
+    <tr>
+        <th width="100" >Валюта</th>
+        <th width="150" >Цена, долларов</th>
+    </tr>
+    <tr align="center">
+        <td>Биткоин</td>
+        <td id = 'BTC'> </td>
+    </tr>
+    <tr align="center">
+        <td>Эфир</td>
+        <td id = 'ETH'> </td>
+    </tr>
+    <tr align="center">
+        <td>Евро</td>
+        <td id = 'EUR'> </td>
+    </tr>
+    <tr align="center">
+        <td >Рубль</td>
+        <td id = 'RUB'> </td>
+    </tr>
+    <tr align="center">
+        <td>Лайткоин</td>
+        <td id = 'LTC'> </td>
+    </tr>
+</table>
+
+<br>
+<h2 align="center">Лабораторная работа №4</h2>
+<h2 align="center"> Автор: Пименов Алексей</h2>
+</body>
+</html>
